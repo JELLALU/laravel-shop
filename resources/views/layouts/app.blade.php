@@ -9,16 +9,18 @@
     <title>@yield('title', 'Laravel Shop') - Laravel 电商教程</title>
     <!-- 样式 -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
-<div id="app" class="{{ route_class() }}-page">
-    @include('layouts._header')
-    <div class="container">
-        @yield('content')
+    <div id="app" class="{{ route_class() }}-page">
+        @include('layouts._header')
+        <div class="container">
+            @yield('content')
+        </div>
+        @include('layouts._footer')
     </div>
-    @include('layouts._footer')
-</div>
-<!-- JS 脚本 -->
-<script src="{{ mix('js/app.js') }}"></script>
+    <!-- JS 脚本 -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
