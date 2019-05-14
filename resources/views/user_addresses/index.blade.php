@@ -21,19 +21,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($addresses as $address)
+                        @if (!count($addresses))
                             <tr>
-                                <td>{{ $address->contact_name }}</td>
-                                <td>{{ $address->full_address }}</td>
-                                <td>{{ $address->zip }}</td>
-                                <td>{{ $address->contact_phone }}</td>
-                                <td>
-                                    <a href="{{ route('user_addresses.edit', ['user_address' => $address->id]) }}" class="btn btn-primary">修改</a>
-                                    <!-- 把之前删除按钮的表单替换成这个按钮，data-id 属性保存了这个地址的 id，在 js 里会用到 -->
-                                    <button class="btn btn-danger btn-del-address" type="button" data-id="{{ $address->id }}">删除</button>
+                                <td class="text-center" colspan="5">
+                                    <a class="btn btn-primary" href="{{ route('user_addresses.create')}}">
+                                        还没有收货地址请添加收货地址哦！
+                                    </a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @else
+                            @foreach($addresses as $address)
+                                <tr>
+                                    <td>{{ $address->contact_name }}</td>
+                                    <td>{{ $address->full_address }}</td>
+                                    <td>{{ $address->zip }}</td>
+                                    <td>{{ $address->contact_phone }}</td>
+                                    <td>
+                                        <a href="{{ route('user_addresses.edit', ['user_address' => $address->id]) }}" class="btn btn-primary">修改</a>
+                                        <!-- 把之前删除按钮的表单替换成这个按钮，data-id 属性保存了这个地址的 id，在 js 里会用到 -->
+                                        <button class="btn btn-danger btn-del-address" type="button" data-id="{{ $address->id }}">删除</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>

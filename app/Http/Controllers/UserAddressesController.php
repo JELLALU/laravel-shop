@@ -66,8 +66,10 @@ class UserAddressesController extends Controller
 
         $result = $user_address->delete();
 
-        $data['status'] = $result ? 1 : 0;
-        $data['msg'] = $result ? '删除成功！' : '删除失败，请重试';
+        $data = [
+            'status' => $result ? 1 : 0,
+            'msg' => $result ? '删除成功！' : '删除失败，请重试'
+        ];
 
         return $data;
     }
