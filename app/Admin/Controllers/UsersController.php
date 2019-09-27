@@ -37,7 +37,7 @@ class UsersController extends Controller
         $grid = new Grid(new User);
 
         // 创建一个列名为 ID 的列，内容是用户的 id 字段
-        $grid->id('ID');
+        $grid->id('ID')->sortable();
 
         // 创建一个列名为 用户名 的列，内容是用户的 name 字段。下面的 email() 和 created_at() 同理
         $grid->name('用户名');
